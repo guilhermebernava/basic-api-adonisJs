@@ -26,6 +26,8 @@ export default class User extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
+  //ante de salvar sempre vai rodar esse codigo
+  //que serve para CRYPTOGRAFAR a senha do USER
   @beforeSave()
   public static async hashPassword(user: User) {
     if (user.$dirty.password) {
