@@ -11,7 +11,7 @@ Route.delete('/auth', 'AuthController.logout')
 
 //#region UBUNTU
 //ROTA com middleware de validar user LOGADO
-Route.post('/ubuntu', 'UbuntusController.post').middleware('auth').middleware('roleAuth:ADMIN')
+Route.post('/ubuntu', 'UbuntusController.post').middleware('auth').middleware('roleAuth:TESTE')
 //#endregion
 
 //#region  ACL
