@@ -40,4 +40,7 @@ Server.middleware.register([() => import('@ioc:Adonis/Core/BodyParser')])
 */
 
 //esta registrando o AUTH como um MIDDLEWARE dentro do projeto
-Server.middleware.registerNamed({ auth: () => import('App/Middleware/Auth') })
+Server.middleware.registerNamed({
+  auth: () => import('App/Middleware/Auth'),
+  roleAuth: () => import('App/Middleware/RolesAuth'),
+})

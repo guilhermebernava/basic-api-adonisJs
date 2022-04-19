@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
+import { column, beforeSave, BaseModel, manyToMany, ManyToMany } from '@ioc:Adonis/Lucid/Orm'
+import Role from './Role'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true, serializeAs: null })
@@ -25,6 +26,10 @@ export default class User extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  //muitos para muitos
+  @manyToMany(() => Role)
+  public roles: ManyToMany<typeof Role>
 
   //ante de salvar sempre vai rodar esse codigo
   //que serve para CRYPTOGRAFAR a senha do USER

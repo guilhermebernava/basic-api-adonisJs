@@ -35,6 +35,17 @@ export default class ExceptionHandler extends HttpExceptionHandler {
         code: 'BAD_REQUEST',
         message: 'YOU ARE SENDING SOMETHING WRONG IN YOUR REQUEST BODY',
       })
+    } else if (error.status === 404) {
+      return ctx.response.status(error.status).send({
+        code: 'NOT_FOUND',
+        message: 'NOT FOUND THIS RESOURCE',
+        status: error.stack,
+      })
+    } else if (error.status === 403) {
+      return ctx.response.status(error.status).send({
+        code: 'FORBIDEN',
+        message: 'YOU ARE NOT ALLOWED TO ACCESS THIS RESOURCE',
+      })
     }
   }
 }
